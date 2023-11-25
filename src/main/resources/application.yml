@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.17.0.1:3306/electronic_mall?serverTimezone=GMT%2b8
+    username: rayce
+    password: rayce
+  servlet:
+    multipart:
+      max-file-size: 30MB
+#  redis:
+#    database: 0
+#    host: 192.168.1.114
+#    port: 6379
+#    lettuce:
+#      pool:
+#        min-idle: 0
+#        max-active: 8
+#        max-idle: 8
+#        max-wait: -1ms
+#    connect-timeout: 30000ms
