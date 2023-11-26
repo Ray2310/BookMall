@@ -30,8 +30,6 @@ public class AddressController {
         return Result.success(list);
     }
     //todo task2 查询对应id的地址
-
-
     //todo task3 新增地址
 
     //todo task4 删除地址
