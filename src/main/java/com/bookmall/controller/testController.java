@@ -1,6 +1,6 @@
 package com.bookmall.controller;
 import com.bookmall.commonUtils.Result;
-import com.bookmall.pojo.User;
+import com.bookmall.domain.entity.User;
 import com.bookmall.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

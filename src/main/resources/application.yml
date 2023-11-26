@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.17.0.1:3306/electronic_mall?serverTimezone=GMT%2b8
+    url: jdbc:mysql://127.17.0.1:3306/book_mall?serverTimezone=GMT%2b8
     username: rayce
     password: rayce
   servlet:
