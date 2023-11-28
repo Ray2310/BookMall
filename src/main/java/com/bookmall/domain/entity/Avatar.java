@@ -24,4 +24,11 @@ public class Avatar {
     private long size;
     private String url;
     private String md5;
+
+    public Avatar(String type, long size, String url, String md5) {
+        this.type = type;
+        this.size = size;
+        this.url = url;
+        this.md5 = md5;
+    }
 }
