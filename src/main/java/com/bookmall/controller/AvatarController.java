@@ -1,5 +1,7 @@
 package com.bookmall.controller;
 
+import com.bookmall.annotation.Authority;
+import com.bookmall.annotation.enumUtils.AuthorityType;
 import com.bookmall.commonUtils.Result;
 import com.bookmall.constants.Constants;
 import com.bookmall.domain.entity.Avatar;
@@ -31,7 +33,7 @@ public class AvatarController {
         avatarService.download(fileName,response);
     }
     //根据文件id删除文件
-//    @Authority(AuthorityType.requireAuthority)
+    @Authority(AuthorityType.requireAuthority)
     @DeleteMapping("/{id}")
     public Result deleteById(@PathVariable int id){
         int i = avatarService.delete(id);

@@ -1,5 +1,7 @@
 package com.bookmall.controller;
 
+import com.bookmall.annotation.Authority;
+import com.bookmall.annotation.enumUtils.AuthorityType;
 import com.bookmall.commonUtils.Result;
 import com.bookmall.constants.Constants;
 import com.bookmall.domain.entity.Address;
@@ -13,7 +15,7 @@ import java.util.List;
  * 地址请求Controller层
  *
  */
-//@Authority(AuthorityType.requireLogin)
+@Authority(AuthorityType.requireLogin)
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {
