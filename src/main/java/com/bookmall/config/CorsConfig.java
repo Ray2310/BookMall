@@ -6,6 +6,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 配置跨于请求的， 放行所有请求
+ */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
