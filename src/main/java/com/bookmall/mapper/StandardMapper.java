@@ -8,9 +8,9 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface StandardMapper extends BaseMapper<Standard> {
-//    @Update("update book_standard set store = #{num} where book_id = #{book_id} and value = #{standard}")
-//    void deductStore(@Param("book_id") long book_id, @Param("standard") String standard, @Param("num") int num);
-//
-//    @Select("select store from book_standard where book_id = #{book_id} and value = #{standard}")
-//    int getStore(@Param("book_id") long book_id, @Param("standard")String standard);
+    @Update("update book_standard set store = #{num} where book_id = #{book_id} and value = #{standard}")
+    void deductStore(@Param("book_id") long book_id, @Param("standard") String standard, @Param("num") int num);
+
+    @Select("select store from book_standard where book_id = #{book_id} and value = #{standard}")
+    int getStore(@Param("book_id") long book_id, @Param("standard")String standard);
 }
