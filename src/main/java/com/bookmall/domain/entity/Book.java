@@ -27,7 +27,6 @@ public class Book extends Model<Book> {
       */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
     /**
       * 商品名称 
       */

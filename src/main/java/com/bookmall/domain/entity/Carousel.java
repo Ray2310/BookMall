@@ -29,7 +29,7 @@ public class Carousel extends Model<Carousel> {
     /**
       * 对应的商品 
       */
-    private Long goodId;
+    private Long bookId;
 
     /**
       * 轮播顺序 
@@ -37,7 +37,7 @@ public class Carousel extends Model<Carousel> {
     private Integer showOrder;
 
     @TableField(exist = false)
-    private String goodName;
+    private String bookName;
 
     @TableField(exist = false)
     private String img;

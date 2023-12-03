@@ -25,7 +25,6 @@ public class Category extends Model<Category> {
       */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
     /**
       * 类别名称 
       */

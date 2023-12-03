@@ -20,14 +20,10 @@ public class TokenUtils {
 
     // y
     public static String genToken(String userId, String username){
-        // 通过uuid生成一个新的随机token
-//        String token = UUID.randomUUID() + ":" + userId + ":" + username;
-//        return token;
         String token = JWT.create()
                 .withAudience(userId)
                 .sign(Algorithm.HMAC256(username));
         return token;
-
     }
 
 

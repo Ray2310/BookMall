@@ -56,7 +56,6 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         //设置token
         userDTO.setToken(token);
 //        Long uuid = redisTemplate.getExpire(RedisConstants.USER_TOKEN_KEY + token);
-
         System.out.println("token====> " + token);
         //判断是否为管理员登陆
         return userDTO;

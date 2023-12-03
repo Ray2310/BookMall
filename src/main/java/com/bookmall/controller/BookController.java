@@ -41,6 +41,7 @@ public class BookController {
         return Result.success(bookService.getBookById(id));
     }
     //todo task4 获取通过图书id获取图书的规格信息
+    //http://localhost:9191/api/book/standard/9
     @GetMapping("/standard/{id}")
     public Result getStandard(@PathVariable int id) {
         return Result.success(bookService.getStandard(id));
@@ -58,10 +59,8 @@ public class BookController {
     @Authority(AuthorityType.requireAuthority)
     @PostMapping
     public Result save(@RequestBody Book book) {
-        System.out.println(book);
         return Result.success(bookService.saveOrUpdateBook(book));
     }
-
 
     //todo task2 更新图书
     @Authority(AuthorityType.requireAuthority)

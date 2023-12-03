@@ -1,5 +1,5 @@
 server:
-  port: 9191
+  port: 9999
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,3 +20,7 @@ spring:
         max-idle: 8
         max-wait: -1ms
     connect-timeout: 30000ms
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

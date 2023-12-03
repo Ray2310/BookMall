@@ -27,4 +27,9 @@ public class PathUtils {
         }
         return path;
     }
+
+//    public static void main(String[] args) {
+//        String classLoadRootPath = getClassLoadRootPath();
+//        System.out.println("class: " + classLoadRootPath);
+//    }
 }

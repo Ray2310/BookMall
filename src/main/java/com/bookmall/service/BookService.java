@@ -26,6 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static com.bookmall.commonUtils.PathUtils.getClassLoadRootPath;
 import static com.bookmall.constants.RedisConstants.BOOK_TOKEN_KEY;
 import static com.bookmall.constants.RedisConstants.BOOK_TOKEN_TTL;
 

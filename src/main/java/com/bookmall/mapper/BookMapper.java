@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.bookmall.domain.dto.BookDTO;
 import com.bookmall.domain.entity.Book;
 import com.bookmall.domain.entity.BookStandard;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,6 +16,7 @@ public interface BookMapper extends BaseMapper<Book> {
     @Select("select * from book_standard where book_id = #{id}")
     List<BookStandard> getStandardById(int id);
 
+    @Select("SELECT book.*,MIN(book_standard.price)*discount as price FROM `book` LEFT JOIN book_standard on book.id = book_standard.book_id  WHERE is_delete = 0 AND recommend = 1 GROUP BY id  ORDER BY price ASC")
     List<BookDTO> findFrontBooks();
 
     @Update("update book set is_delete = 1 where id = #{id}")
