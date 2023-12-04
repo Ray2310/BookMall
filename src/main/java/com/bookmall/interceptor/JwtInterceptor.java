@@ -32,11 +32,20 @@ public class JwtInterceptor implements HandlerInterceptor {
     RedisTemplate<String, User> redisTemplate;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String token = request.getHeader("Token");
+        String token = request.getHeader("token");
         //如果不是映射到方法，直接通过
+        int res = 0;
         if(!(handler instanceof HandlerMethod)){
+            res  = 1;
             return true;
+        }else {
+            // false
+            res = 2;
+
         }
+//        System.out.println("是否集成handler："+ res);
+//        System.out.println("handler :" + ((HandlerMethod) handler).getMethod());
+//
 //        System.out.println("1. request: " + request.getHeader("token"));
 //        System.out.println("2. response: " + response);
 //        System.out.println("3. token: " + token);
@@ -46,7 +55,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
         //通过token，将redis中的user存到threadlocal（UserHolder）
         User user = redisTemplate.opsForValue().get(RedisConstants.USER_TOKEN_KEY + token);
-//        System.out.println("user: "  +user);
+        System.out.println("user: "  +user);
         if(user == null){
             throw  new ServiceException(Constants.TOKEN_ERROR,"token失效,请重新登陆");
         }

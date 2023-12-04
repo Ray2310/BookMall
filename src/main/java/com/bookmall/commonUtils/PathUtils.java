@@ -3,6 +3,10 @@ package com.bookmall.commonUtils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+/**
+ * 路径工具类
+ *  用来实现存储文件的路径获取， 通过调用System
+ */
 public class PathUtils {
     public static String getClassLoadRootPath() {
         String path = "";

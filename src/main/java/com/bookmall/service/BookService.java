@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.bookmall.commonUtils.PathUtils.getClassLoadRootPath;
+import static com.bookmall.constants.Constants.UN_DELETE_BOOK;
+import static com.bookmall.constants.Constants.UN_RECOMMEND_BOOK;
 import static com.bookmall.constants.RedisConstants.BOOK_TOKEN_KEY;
 import static com.bookmall.constants.RedisConstants.BOOK_TOKEN_TTL;
 
@@ -77,6 +79,10 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         }
         //数据库中没有则返回异常
         throw new ServiceException(Constants.NO_RESULT,"无结果");
+    }
+
+    public List<Book> getSaleRank(int num) {
+        return bookMapper.getSaleRank(num);
     }
 
     /**
@@ -196,5 +202,13 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
             book.setPrice(getMinPrice(book.getId()));
         }
         return page;
+    }
+
+    public List<BookDTO> listBook() {
+        LambdaQueryWrapper<Book> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Book::getIsDelete,UN_DELETE_BOOK);
+//        queryWrapper.eq(Book::getRecommend, UN_RECOMMEND_BOOK);
+        List<Book> list = list(queryWrapper);
+        return BeanUtil.copyToList(list, BookDTO.class);
     }
 }

@@ -4,6 +4,7 @@ import com.bookmall.annotation.Authority;
 import com.bookmall.annotation.enumUtils.AuthorityType;
 import com.bookmall.commonUtils.Result;
 import com.bookmall.constants.Constants;
+import com.bookmall.domain.dto.BookDTO;
 import com.bookmall.domain.entity.Address;
 import com.bookmall.domain.entity.Book;
 import com.bookmall.domain.entity.Standard;
@@ -17,23 +18,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
-
-
     @Resource
     private StandardService standardService;
 
     @Resource
     private BookService bookService;
     //todo task1 获取所有图书信息
-//    @GetMapping
-//    public Result getAll(){
-//        List<Book> list = bookService.list();
-//        return Result.success(list);
-//    }
-    //todo task2 前台获取所有的Book 查询推荐图书，即recommend=1
+    @GetMapping("/SimBook")
+    public Result getAll(){
+        List<BookDTO> list = bookService.listBook();
+        return Result.success(list);
+    }
+    // task2 前台获取所有的Book 查询推荐图书，即recommend=1
     @GetMapping
     public Result findAll() {
-        return Result.success(bookService.findFrontBooks());
+        List<BookDTO> frontBooks = bookService.findFrontBooks();
+        return Result.success(frontBooks);
     }
     //todo task3 通过id查询图书
     @GetMapping("/{id}")
@@ -41,14 +41,18 @@ public class BookController {
         return Result.success(bookService.getBookById(id));
     }
     //todo task4 获取通过图书id获取图书的规格信息
-    //http://localhost:9191/api/book/standard/9
     @GetMapping("/standard/{id}")
     public Result getStandard(@PathVariable int id) {
         return Result.success(bookService.getStandard(id));
     }
-  
+
 
     //todo task5
+    //查询销量排行
+    @GetMapping("/rank")
+    public Result getSaleRank(@RequestParam int num){
+        return Result.success(bookService.getSaleRank(num));
+    }
 
     //------------------------------后台功能-------------------------------------
 
@@ -77,9 +81,6 @@ public class BookController {
         bookService.deleteBook(id);
         return Result.success();
     }
-
-
-
 
     //todo task7 分页获取数据
     @GetMapping("/page")

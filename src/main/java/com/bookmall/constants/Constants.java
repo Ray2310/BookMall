@@ -16,4 +16,8 @@ public class Constants {
     //文件存储位置
     public static final String fileFolderPath = PathUtils.getClassLoadRootPath() + "/file/";
     public static final String avatarFolderPath =  PathUtils.getClassLoadRootPath() + "/avatar/";
+    // 未被 删除的书籍
+    public static final int UN_DELETE_BOOK = 0;
+    //未被推荐的书籍
+    public static final int UN_RECOMMEND_BOOK= 0;
 }

@@ -3,6 +3,10 @@ package com.bookmall.commonUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 封装baseApi， 将前端需要的map类型的响应信息回现
+ * 定义map属性， 然后赋值 3个key, value 默认为null
+ */
 public class BaseApi {
     private static Map<String, Object> map(String code, Object data, String msg) {
         Map<String, Object> map = new HashMap<>();
