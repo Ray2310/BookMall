@@ -205,10 +205,6 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
     }
 
     public List<BookDTO> listBook() {
-        LambdaQueryWrapper<Book> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Book::getIsDelete,UN_DELETE_BOOK);
-//        queryWrapper.eq(Book::getRecommend, UN_RECOMMEND_BOOK);
-        List<Book> list = list(queryWrapper);
-        return BeanUtil.copyToList(list, BookDTO.class);
+        return bookMapper.findAllBooks();
     }
 }

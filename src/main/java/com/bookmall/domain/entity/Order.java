@@ -70,7 +70,7 @@ public class Order extends Model<Order> {
 
     //该订单包含的商品信息
     @TableField(exist = false)
-    private String goods;
+    private String books;
 
     // 对应购物车id
     @TableField(exist = false)

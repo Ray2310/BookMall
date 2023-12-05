@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookmall.mapper.OrderMapper">
+    <resultMap id="bookMap" type="Map">
+        <result property="bookId" column="book_id"></result>
+        <result property="bookName" column="book_name"></result>
+        <result property="count" column="count"></result>
+        <result property="price" column="price"></result>
+        <result property="discount" column="discount"></result>
+        <result property="standard" column="standard"></result>
+        <result property="img" column="imgs"></result>
+    </resultMap>
+    <select id="selectByUserId" parameterType="int" resultType="java.util.HashMap">
+        SELECT o.*, og.book_id,book.`name` as book_name, og.count, og.standard, book.imgs
+        FROM t_order o, order_books og ,book
+        WHERE o.id = og.order_id AND o.user_id = #{userId} AND og.book_id = book.id
+        ORDER BY o.create_time DESC
+    </select>
+    <select id="selectByOrderNo" parameterType="String" resultMap="bookMap">
+        SELECT  og.book_id,book.`name` as book_name,  og.standard,gs.price ,book.discount ,og.count, book.imgs
+        FROM t_order o, order_books og ,book,book_standard gs
+        WHERE o.id = og.order_id AND o.order_no = #{orderNo} AND og.book_id = book.id
+          AND gs.book_id = og.book_id AND gs.`value` = standard
+    </select>
+</mapper>

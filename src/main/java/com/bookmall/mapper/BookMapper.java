@@ -19,6 +19,9 @@ public interface BookMapper extends BaseMapper<Book> {
     @Select("SELECT book.*,MIN(book_standard.price)*discount as price FROM `book` LEFT JOIN book_standard on book.id = book_standard.book_id  WHERE is_delete = 0 AND recommend = 1 GROUP BY id  ORDER BY price ASC")
     List<BookDTO> findFrontBooks();
 
+    @Select("SELECT book.*,MIN(book_standard.price)*discount as price FROM `book` LEFT JOIN book_standard on book.id = book_standard.book_id  WHERE is_delete = 0 GROUP BY id  ORDER BY price ASC")
+    List<BookDTO> findAllBooks();
+
     @Update("update book set is_delete = 1 where id = #{id}")
     void fakeDelete(Long id);
 

@@ -34,7 +34,7 @@ public class Cart extends Model<Cart> {
     /**
       * 商品id 
       */
-    private Long goodId;
+    private Long bookId;
 
     private String standard;
 

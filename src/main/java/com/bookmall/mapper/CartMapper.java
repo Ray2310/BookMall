@@ -10,6 +10,6 @@ import java.util.Map;
 @Mapper
 public interface CartMapper extends BaseMapper<Cart> {
 
-//    @MapKey("id")
-//    List<Map<String, Object>> selectByUserId(Long userId);
+    @MapKey("id")
+    List<Map<String, Object>> selectByUserId(Long userId);
 }
