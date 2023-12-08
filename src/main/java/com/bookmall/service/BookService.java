@@ -43,8 +43,6 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
     private RedisTemplate<String, Book> redisTemplate;
     @Resource
     private BookMapper bookMapper;
-
-
     /**
      * 获取前台的书籍
      * @return
