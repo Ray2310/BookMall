@@ -96,6 +96,12 @@ public class AvatarService extends ServiceImpl<AvatarMapper, Avatar> {
         }
     }
 
+    // 测试代码
+//    public static void main(String[] args) {
+//        String string = UUID.randomUUID().toString();
+//        System.out.println("uuid : " + string);
+//    }
+
     public int delete(int id) {
         Avatar avatar = avatarMapper.selectById(id);
         int delete = avatarMapper.delete(id);

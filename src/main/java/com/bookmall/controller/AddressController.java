@@ -15,14 +15,14 @@ import java.util.List;
  * 地址请求Controller层
  *
  */
-@Authority(AuthorityType.requireLogin)
-@RestController
+
+@Authority(AuthorityType.requireLogin) // 作用： 此controller类中的所有请求都需要登录之后才能访问
+@RestController // 标记类是一个RESTFul风格的控制器
 @RequestMapping("/api/address")
 public class AddressController {
     // 需要对请求做拦截， 如果没有登录的用户不能够访问
     @Resource
     private AddressService addressService;
-
     // task1 获取所有地址
     @GetMapping
     public Result getAll(){
@@ -34,7 +34,6 @@ public class AddressController {
     public Result findAllById(@PathVariable Long userId) {
         return Result.success(addressService.findAllById(userId));
     }
-
     // task3 新增地址
     @PostMapping
     public Result save(@RequestBody Address address) {
@@ -44,9 +43,7 @@ public class AddressController {
         }else{
             return Result.error(Constants.CODE_500,"保存地址失败");
         }
-
     }
-
     // task4 删除地址
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Long id) {
@@ -59,5 +56,4 @@ public class AddressController {
         addressService.updateById(address);
         return Result.success();
     }
-
 }

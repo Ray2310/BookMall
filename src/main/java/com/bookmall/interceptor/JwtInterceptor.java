@@ -21,8 +21,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
-
-
 /*
 第一层拦截器，验证用户token,把redis中的user存到threadlocal
  */

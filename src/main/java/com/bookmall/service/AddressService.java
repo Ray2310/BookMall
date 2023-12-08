@@ -14,8 +14,6 @@ import java.util.List;
  */
 @Service
 public class AddressService extends ServiceImpl<AddressMapper, Address> {
-
-
     public List<Address> findAllById(Long userId) {
         QueryWrapper<Address> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", userId);
