@@ -27,5 +27,4 @@ public class BaseApi {
     public static Map<String, Object> error(String msg) {
         return map("400", null, msg);
     }
-
 }
