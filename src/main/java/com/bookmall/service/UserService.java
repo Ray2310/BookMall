@@ -49,7 +49,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         String token = TokenUtils.genToken(user.getId().toString(), user.getUsername());
         //把用户token 存到redis中
         redisTemplate.opsForValue().set(RedisConstants.USER_TOKEN_KEY + token,user);
-        //jwt不设置过期时间，只设置redis过期时间。
+        //jwt不设置过期时间，只设置redis过期时间 3 小时。
         redisTemplate.expire(RedisConstants.USER_TOKEN_KEY +token, RedisConstants.USER_TOKEN_TTL, TimeUnit.MINUTES);
         //把查到的user的一些属性赋值给userDTO
         UserDTO userDTO = BeanUtil.copyProperties(user,UserDTO.class);
@@ -123,8 +123,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
     /**
      * 重置密码
-     *
-     * @param id          用户id
+     * @param id  用户id
      * @param newPassword 新密码
      */
     public void resetPassword(String id, String newPassword) {

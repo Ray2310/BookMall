@@ -58,7 +58,7 @@ public class AvatarService extends ServiceImpl<AvatarMapper, Avatar> {
                 folder.mkdir();
             }
             String folderPath = folder.getAbsolutePath()+"/";   //文件存储文件夹的位置
-            System.out.println("文件存储地址"+folderPath);
+            System.out.println("文件存储地址: "+folderPath);
 
 
             //将文件保存为UUID的名字，通过uuid生成url
@@ -86,9 +86,9 @@ public class AvatarService extends ServiceImpl<AvatarMapper, Avatar> {
         }
         try {
             ServletOutputStream os = response.getOutputStream();
-            response.addHeader("Content-Disposition","attachment;filename="+ URLEncoder.encode(fileName,"UTF-8"));
+            response.addHeader("Content-Disposition","attachment;filename="+ URLEncoder.encode(fileName,"UTF-8"));// 设置响应头，指定下载文件的文件名。 然后对文件名进行 URL 编码，以防止特殊字符引起的问题。
             response.setContentType("application/octet-stream");
-            os.write(FileUtil.readBytes(file));
+            os.write(FileUtil.readBytes(file)); //设置响应的内容类型为二进制流，表示下载文件。
             os.flush();
             os.close();
         } catch (IOException e) {
