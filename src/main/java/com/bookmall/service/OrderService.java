@@ -132,7 +132,6 @@ public class OrderService extends ServiceImpl<OrderMapper, Order> {
             valueOperations.set(redisKey, book);
         }
     }
-
     public List<Map<String, Object>> selectByUserId(int userId) {
         return orderMapper.selectByUserId(userId);
     }
