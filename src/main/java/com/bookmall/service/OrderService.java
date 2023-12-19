@@ -57,12 +57,13 @@ public class OrderService extends ServiceImpl<OrderMapper, Order> {
      */
     @Transactional
     public String saveOrder(Order order) {
+        //1. 生成订单插入订单表
         order.setUserId(TokenUtils.getCurrentUser().getId());
         String orderNo = DateUtil.format(new Date(), "yyyyMMddHHmmss") + RandomUtil.randomNumbers(6);
         order.setOrderNo(orderNo);
         order.setCreateTime(DateUtil.now());
         orderMapper.insert(order);
-
+        // 2. 插入用户_订单表
         OrderBooks orderBooks = new OrderBooks();
         orderBooks.setOrderId(order.getId());
         //遍历order里携带的books数组，并用orderItem对象来接收

@@ -51,7 +51,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         return bookMapper.findFrontBooks();
     }
     /**
-     *  查询一个商品的信息
+     *  查询一个书籍的信息
      * @param id
      * @return
      */
@@ -70,7 +70,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         queryWrapper.eq(Book::getId,id);
         Book dbBook = getOne(queryWrapper);
         if(dbBook!=null){
-            //将商品信息存入redis
+            //将书籍信息存入redis
             valueOperations.set(redisKey,dbBook);
             redisTemplate.expire(redisKey,BOOK_TOKEN_TTL, TimeUnit.MINUTES);
             return dbBook;
@@ -84,7 +84,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
     }
 
     /**
-     * 查询商品的规格
+     * 查询书籍的规格
      * @param id
      * @return
      */
@@ -99,7 +99,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
     //------------------------------后台功能-------------------------------------
 
     /**
-     *  保存商品信息
+     *  保存书籍信息
      * @param book
      * @return
      */
@@ -130,7 +130,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         bookMapper.fakeDelete(id);
     }
     /**
-     * 查询某商品的最低规格价
+     * 查询某书籍的最低规格价
      * @param id
      * @return
      */
@@ -168,7 +168,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         if(categoryId != null){
             query.eq(Book::getCategoryId,categoryId);
         }
-        //筛除掉已被删除的商品
+        //筛除掉已被删除的书籍
         query.eq(Book::getIsDelete,false);
         IPage<Book> page = this.page(new Page<>(pageNum, pageSize), query);
         //把book转为dto
@@ -192,7 +192,7 @@ public class BookService extends ServiceImpl<BookMapper, Book> {
         if(categoryId != null){
             query.eq(Book::getCategoryId,categoryId);
         }
-        //筛除掉已被删除的商品
+        //筛除掉已被删除的书籍
         query.eq(Book::getIsDelete,false);
         IPage<Book> page = this.page(new Page<>(pageNum, pageSize), query);
         for (Book book : page.getRecords()) {
